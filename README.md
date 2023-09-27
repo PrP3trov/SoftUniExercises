@@ -1,1 +1,1 @@
-# SoftUni
+# SoftUni C# Exercise Solutions
