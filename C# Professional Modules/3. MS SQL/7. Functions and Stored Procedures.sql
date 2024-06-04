@@ -78,38 +78,43 @@ BEGIN
 END
 
 --8. Delete Employees and Departments
-CREATE PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT) 
+CREATE PROC usp_DeleteEmployeesFromDepartment (@departmentId INT)
 AS
-BEGIN
-	DECLARE @deletedEmployees TABLE(Id INT)
-	INSERT INTO @deletedEmployees
-		SELECT EmployeeID
-		FROM Employees
-		WHERE DepartmentID = @departmentId
-	
-	ALTER TABLE Departments
-	ALTER COLUMN ManagerID INT NULL
 
-	UPDATE Departments
-	SET ManagerID = NULL
-	WHERE ManagerID IN (SELECT EmployeeID from Employees WHERE DepartmentID = @departmentId)
+DECLARE @empIDsToBeDeleted TABLE
+(
+Id int
+)
 
-	DELETE FROM EmployeesProjects
-	WHERE EmployeeID IN (SELECT EmployeeID from Employees WHERE DepartmentID = @departmentId)
+INSERT INTO @empIDsToBeDeleted
+SELECT e.EmployeeID
+FROM Employees AS e
+WHERE e.DepartmentID = @departmentId
 
-	UPDATE Employees
-	SET ManagerID = NULL
-	WHERE EmployeeID IN (SELECT EmployeeID from Employees WHERE DepartmentID = @departmentId)
+ALTER TABLE Departments
+ALTER COLUMN ManagerID int NULL
 
-	DELETE FROM Employees
-	WHERE DepartmentID = @departmentId
+DELETE FROM EmployeesProjects
+WHERE EmployeeID IN (SELECT Id FROM @empIDsToBeDeleted)
 
-	DELETE FROM Departments
-	WHERE DepartmentID = @departmentId
+UPDATE Employees
+SET ManagerID = NULL
+WHERE ManagerID IN (SELECT Id FROM @empIDsToBeDeleted)
 
-	SELECT COUNT(*) FROM Employees
-	WHERE DepartmentID = @departmentId
-END
+UPDATE Departments
+SET ManagerID = NULL
+WHERE ManagerID IN (SELECT Id FROM @empIDsToBeDeleted)
+
+DELETE FROM Employees
+WHERE EmployeeID IN (SELECT Id FROM @empIDsToBeDeleted)
+
+DELETE FROM Departments
+WHERE DepartmentID = @departmentId 
+
+SELECT COUNT(*) AS [Employees Count] FROM Employees AS e
+JOIN Departments AS d
+ON d.DepartmentID = e.DepartmentID
+WHERE e.DepartmentID = @departmentId
 
 --9. Find Full Name
 CREATE PROCEDURE usp_GetHoldersFullName
