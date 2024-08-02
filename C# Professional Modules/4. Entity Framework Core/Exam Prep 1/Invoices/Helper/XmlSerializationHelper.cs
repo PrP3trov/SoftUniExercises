@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace Boardgames.Helper
+namespace Invoices.Helper
 {
     public class XmlSerializationHelper
     {
@@ -78,7 +78,8 @@ namespace Boardgames.Helper
                 XmlWriterSettings settings = new()
                 {
                     OmitXmlDeclaration = omitXmlDeclaration,
-                    Indent = true
+                    Indent = true,
+                    Encoding = new UTF8Encoding(false),
                 };
 
                 StringBuilder sb = new();

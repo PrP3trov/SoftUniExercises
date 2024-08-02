@@ -122,7 +122,7 @@
                      seller.Name, seller.BoardgamesSellers.Count));
             }
 
-            context.AddRange(sellers);
+            context.Sellers.AddRange(sellers);
             context.SaveChanges();
 
             return sb.ToString().TrimEnd();
