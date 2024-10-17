@@ -1,0 +1,23 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.accordion-container {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.accordion-container details {
+    border: 1px solid silver;
+    padding: 20px;
+    border-bottom: 0px;
+}
+
+.accordion-container details:last-child {
+    border-bottom: 1px solid silver;
+}
+
+.accordion-container details summary {
+    font-weight: 700;
+    cursor: pointer;
+}

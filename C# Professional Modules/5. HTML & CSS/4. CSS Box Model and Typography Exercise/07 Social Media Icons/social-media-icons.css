@@ -1,0 +1,30 @@
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 0px;
+}
+
+.button {
+    background: silver;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 5px;
+    font-size: 0.7rem;
+    border: 1px solid silver;
+}
+
+.button:first-of-type {
+    margin-left: 0px;
+}
+
+i {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+}
