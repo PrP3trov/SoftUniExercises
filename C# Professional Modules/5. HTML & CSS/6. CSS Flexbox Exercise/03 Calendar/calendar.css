@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eee;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.calendar {
+    border-radius: 3px;
+    border: 1px solid gray;
+    margin: 5px;
+    display: flex;
+}
+
+.calendar section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.week {
+    flex: 0 0 70%;
+    border-right: 1px solid gray;
+}
+
+.note {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.week > div, .note > div {
+    border: 1px solid gray;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+.week > div:nth-child(1),
+.week> div:nth-child(7) {
+    flex: 1 1 100%
+}
