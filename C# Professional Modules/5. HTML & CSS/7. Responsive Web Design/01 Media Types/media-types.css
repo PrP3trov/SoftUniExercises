@@ -1,24 +1,37 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@media all {
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        padding: 2em;
+        font: 14px/1.5 Lato, sans-serif;
+    }
+    p {
+        padding-bottom: 1.5em;
+    }
 }
 
-body {
-    padding: 2em;
-    font: 14px;
+@media print {
+    body::before {
+        display: block;
+        content: "The page is using a print preview or it was printed";
+    }
 }
 
-p {
-    padding-bottom: 1.5em;
+@media screen {
+    body::before {
+        display: block;
+        content: "The page is bein shown on a screen";
+    }
 }
 
-.page{
-    background-color: #369;
-    color: #fff;
-    padding: 1em 1.5em;
-    margin-bottom: 2em;
-    border-radius: 0.3em;
+body::before {
+    Background-color: #369;
+    content: "This page is being shown on a screen";
+    Color:  #fff;
+    Padding: 1em 1.5em;
+    Margin-bottom: 2em;
+    Border-radius: 0.3em;
 }
-
-

@@ -1,0 +1,50 @@
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        padding: 2em;
+        font: 14px/1.5 Lato, sans-serif;
+    }
+    p {
+        padding-bottom: 1.5em;
+    }
+
+@media screen and (hover: none) {
+    body::before {
+        display: block;
+        content: "This device doesn't support hover";
+    }
+}
+
+@media screen and (orientation: landscape) {
+    body::before {
+        display: block;
+        content: "The device is in landscape orientation";
+    }
+}
+
+@media screen  and (width:600px){
+    body::before {
+        display: block;
+        content: 'The viewpoet width is 600px';
+    }
+}
+
+@media screen and (height: 800px) {
+    body::before {
+    display: block;
+    content: 'The viewport height is 800px';
+    }
+}
+
+body::before {
+    Background-color: #369;
+    content: "This page is test";
+    Color:  #fff;
+    Padding: 1em 1.5em;
+    Margin-bottom: 2em;
+    Border-radius: 0.3em;
+}
