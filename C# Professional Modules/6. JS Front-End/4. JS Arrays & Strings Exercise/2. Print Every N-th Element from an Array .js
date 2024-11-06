@@ -4,7 +4,7 @@ function solve (array, step) {
         newArray.push(array[i])
        
     }
-    console.log(newArray);
+    return newArray;
 }
 
 solve(['1', '2','3', '4', '5'], 6);
