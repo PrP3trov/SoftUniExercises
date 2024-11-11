@@ -15,4 +15,3 @@ function isPerfectNum(num) {
     }
 }
 
-isPerfectNum(1236498);
