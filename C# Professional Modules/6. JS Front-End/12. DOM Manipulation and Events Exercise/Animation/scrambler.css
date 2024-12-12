@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 Lato, sans-serif;
+}
+
+body,
+input,
+textarea,
+button,
+select,
+option {
+    font: inherit;
+}
+
+body {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    font-size: 2em;
+    font-family: monospace;
+}
+
+.original {
+    display: none;
+}
+
+.text {
+    display: flex;
+    overflow: hidden;
+    height: 2ch;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 1;
+
+        .characters {
+            translate: 0 -2490%;
+        }
+    }
+
+    .space {
+        width: 1ch;
+    }
+
+    .word {
+        display: flex;
+
+        .letter {
+            display: flex;
+
+            .characters {
+                width: 1ch;
+                word-break: break-word;
+                white-space: break-spaces;
+                transition: translate 0.3s steps(20);
+            }
+        }
+    }
+}
