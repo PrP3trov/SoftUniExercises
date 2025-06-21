@@ -1,4 +1,7 @@
-﻿@* @{
+﻿@using RecipeSharingPlatform.ViewModels.Recipe
+@model IEnumerable<FavoriteRecipeViewModel>?
+
+@{
     ViewData["Title"] = "Favorite Recipes";
 }
 
@@ -51,4 +54,4 @@ else
     <a asp-controller="Recipe" asp-action="Index" class="btn btn-primary mt-3">
         <i class="fas fa-arrow-left"></i> Back to Recipes
     </a>
-</div> *@
+</div>

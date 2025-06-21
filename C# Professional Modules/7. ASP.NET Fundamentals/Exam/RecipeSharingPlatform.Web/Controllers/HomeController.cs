@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecipeSharingPlatform.ViewModels;
+using RecipeSharingPlatform.Web.Controllers;
 using System.Diagnostics;
 
-public class HomeController : Controller
+public class HomeController : BaseController
 {
     private readonly ILogger<HomeController> _logger;
 
@@ -11,9 +13,24 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
+    [AllowAnonymous]
     public IActionResult Index()
     {
-        return View();
+        try
+        {
+            if(IsUserAuthenticated())
+            {
+                return RedirectToAction(nameof(Index), "Recipe");
+            }
+            return View();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
     }
 
     public IActionResult Privacy()
